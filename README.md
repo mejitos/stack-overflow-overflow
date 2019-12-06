@@ -7,6 +7,8 @@ Basic functionality has been reached with some minor bugs here and there, mainly
 HTTP requests are made only once per page, so every page is saved in memory after it is queried. Even though the query time is usually something like 5 seconds, in the future I'd like to make it so that it makes these requests in background beforehand e.g. at first it gets 3 first pages and everytime user changes page = new page will be queried in background to make it look like there is no delay in getting these pages.
 
 
+__For now works only on Windows__
+
 To use the program, you need to install the requirements and create `config.py` file and in there you have to make class Config with necessary attributes.
 
 ``` 
@@ -29,6 +31,9 @@ To use the program, you need to install the requirements and create `config.py` 
 * '-q' or '--question' = search from questions only
 * '-a' or '--answer'   = search from answers
 * '-r' or '--results'  = how many result pages to go through
+
+
+## __UPDATE: HOX! The arrows in bottom bar doesn't show up on windows CMD unless it supports unicode and for me, it doesn't do that as a default__
 
 
 ### Commands

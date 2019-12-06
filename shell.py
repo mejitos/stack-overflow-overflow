@@ -112,6 +112,8 @@ class Shell:
 
 
     def print_bottom_bar(self):
+        """Prints bottom bar with useful commands"""
+
         previous_post = u'\u2bc5' + ' Previous Post'
         next_post = u'\u2bc6' + ' Next Post'
         previous_thread = u'\u2bc7' + ' Previous Thread'

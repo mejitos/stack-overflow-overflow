@@ -1,21 +1,21 @@
+from config import Config
 from selenium import webdriver
+
 
 class Result(object):
     """Class to hold information of search result
 
     Attributes:
-        DRIVER_PATH: Path for the webdriver used by Selenium
         url: URL where the search result was found
         text: Text of the search result as a dictionary
         votes: Number of votes on the result
+        date: Date and time of posting the result
         comments: Possible comments in the result as a list of strings
     """
 
 
-    DRIVER_PATH = r'C:\Users\Timo\Projects\Python\stack-overflow-overflow\geckodriver.exe'
-
-    def __init__(self, text, user, votes, date):
-        self.url = None
+    def __init__(self, url, text, user, votes, date):
+        self.url = Config.BASE_URL + url
         self.text = text
         self.user = user
         self.votes = votes
@@ -29,6 +29,6 @@ class Result(object):
         For now Firefox is the only supported browser for this program
         """
         
-        browser = webdriver.Firefox(executable_path=self.DRIVER_PATH)
+        browser = webdriver.Firefox(executable_path=Config.DRIVER_PATH)
         browser.set_page_load_timeout(10)
         browser.get(self.url)

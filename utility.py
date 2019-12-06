@@ -1,7 +1,8 @@
 """
-    Module for all the helper functions used in "Stack Overflow
-    overflow" program.
+    Module for all the helper functions used in 
+    "Stack Overflow overflow" program.
 """
+
 
 import math
 
@@ -22,5 +23,6 @@ def round_up(x, row_length):
     return rounded // row_length
 
 
+# TODO: Decide which round_up function to use, shouldn't really matter
 # def round_up(x, row_length):
 #     return x if x % row_length == 0 else x + row_length - x % row_length

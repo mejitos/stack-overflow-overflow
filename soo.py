@@ -2,9 +2,12 @@
     Stack Overflow overflow
     
     Little commandline tool for querying Stack Overflow through terminal
-    as a part of normal workflow inside the terminal
+    as a part of normal workflow inside the terminal. Program makes a
+    query for Stack Overflow and parses the results so you can browse
+    through them in your terminal one result at a time using your keyboard
+    only.
 
-    Usage through commandline:
+    Example usage through terminal:
         python soo.py [flags] your-query-here
 
         You can also use flags (__NOT IMPLEMENTED__)
@@ -36,7 +39,8 @@
 
 """
 
-__version__ = '0.0.1'
+
+__version__ = '0.0.2'
 __author__ = 'Timo Mehto'
 
 
@@ -44,12 +48,13 @@ import os
 import sys
 from shell import Shell
 
+
 if __name__ == '__main__':
     from argparse import ArgumentParser
     parser = ArgumentParser(# prog='Stack Overflow overflow',
-                            # usage='How to use this shit',
+                            # usage='How to use the program',
                             epilog='Happy overflowing!',
-                            description='CLI tool for Stack Overflow querying')
+                            description='CLI tool for browsing Stack Overflow')
 
     parser.add_argument('Query', metavar='query', type=str, help='what to search for')
     parser.add_argument('-q', '--question', action='store_true', help='search from questions only')

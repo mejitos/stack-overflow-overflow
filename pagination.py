@@ -1,5 +1,3 @@
-
-
 class Pagination(object):
     """Creates links for next and previous pages of the results.
 
@@ -8,9 +6,7 @@ class Pagination(object):
     so forth.
     """
     
-
-    @staticmethod
-    def _next_page(url):
+    def _next_page(self, url):
         """Changes the current page to next page
         
         
@@ -32,8 +28,7 @@ class Pagination(object):
         return new_url
 
 
-    @staticmethod
-    def _previous_page(url):
+    def _previous_page(self, url):
         """Changes the current page to previous page
         
         

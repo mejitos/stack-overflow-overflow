@@ -1,6 +1,20 @@
 import requests
 
+
 class Query:
+    """
+        Class used for making HTTP requests
+
+        Also contains helper functions needed to make correct
+        requests.
+
+        Attributes:
+            base_url: Base URL where the queries are made to
+            index: Resource for the home/index page
+            search: Resource for the search functionality
+            headers: Headers used while making requests
+    """
+
 
     def __init__(self):
         # Base info
@@ -34,7 +48,8 @@ class Query:
             kwargs: Keyword arguments which are made into querystring
 
         Returns:
-            HTML of the query result
+            Name/path of the requested file/resource and the HTML of 
+            the query result
         """
 
         query_string = self.create_query_string(**kwargs)

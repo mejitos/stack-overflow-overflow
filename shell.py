@@ -112,12 +112,12 @@ class Shell:
 
 
     def print_bottom_bar(self):
-        """Prints bottom bar with useful commands"""
+        """Prints bottom bar with useful basic commands"""
 
-        previous_post = u'\u2bc5' + ' Previous Post'
-        next_post = u'\u2bc6' + ' Next Post'
-        previous_thread = u'\u2bc7' + ' Previous Thread'
-        next_thread = u'\u2bc8' + ' Next Thread'
+        previous_post = u'\u25b2' + ' Previous Post'
+        next_post = u'\u25bc' + ' Next Post'
+        previous_thread = u'\u25c4' + ' Previous Thread'
+        next_thread = u'\u25ba' + ' Next Thread'
 
         new_query = 'SHIFT + Q - New Query'
         open_in_browser = 'SHIFT + B - Open In Browser'
@@ -133,8 +133,8 @@ class Shell:
         print(Back.WHITE + Fore.BLACK +
                 new_query.rjust(self.tab + len(new_query), ' ') +
                 open_in_browser.rjust(self.tab * 2 + len(open_in_browser), ' ') +
-                exit_program.rjust(self.tab * 2 + len(exit_program), ' ') + ' ' * 7 +
-                Style.RESET_ALL, end='', flush=True)
+                exit_program.rjust(self.tab * 2 + len(exit_program), ' ') + ' ' * 8 +
+                Style.RESET_ALL)
 
 
     def clear(self):
@@ -158,8 +158,6 @@ class Shell:
         while key != b'E':
             if msvcrt.kbhit():
                 key = msvcrt.getch()
-                # print(key)
-                # print(str(key))
 
                 if key == b'H':
                     if i == 0:
@@ -190,18 +188,19 @@ class Shell:
                         self.print_bottom_bar()
 
                 elif key == b'M':
+                    # If the result is last result of the page, gets new page of results
                     if j == len(self.search_page.get_urls()) - 1:
-                        pass
-                    else:
-                        j += 1
-                        
-                        if len(self.result_pages) == j:
-                            self.result_pages.append(ResultPage(self.search_page.get_urls()[j]))
+                        self.search_page.next_page()
 
-                        i = 0
-                        self.clear()
-                        self.print_result(self.result_pages[j].get_results()[i])
-                        self.print_bottom_bar()
+                    j += 1
+                    
+                    if len(self.result_pages) == j:
+                        self.result_pages.append(ResultPage(self.search_page.get_urls()[j]))
+
+                    i = 0
+                    self.clear()
+                    self.print_result(self.result_pages[j].get_results()[i])
+                    self.print_bottom_bar()
 
                 elif key == b'Q':
                     self.clear()

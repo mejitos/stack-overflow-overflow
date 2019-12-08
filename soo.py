@@ -29,7 +29,7 @@
         ## Up - Down        = Get different post
         ## Left - Right     = Get different result thread
         ## Shift + H        = Help (__NOT IMPLEMENTED__)
-        ## Shit + B         = Open the result/thread in browser (__NOT IMPLEMENTED__)
+        ## Shit + B         = Open the result/thread in browser
         ## Shit + Q         = Make a new query
         ## Shit + E         = Exit the program
         ## Shift + A        = Open/close post comments (__NOT IMPLEMENTED__)
@@ -40,7 +40,7 @@
 """
 
 
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 __author__ = 'Timo Mehto'
 
 

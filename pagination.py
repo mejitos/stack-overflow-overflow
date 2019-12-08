@@ -6,44 +6,42 @@ class Pagination(object):
     so forth.
     """
     
-    def _next_page(self, url):
+    def _next_page(self, resource):
         """Changes the current page to next page
         
+        Args:
+            resource: Location/filename of the current endpoint
         
         Returns:
-            Current url as a string
+            Current location/filename as a string
         """
 
-        if 'page' not in url:
-            new_resource = url + '&page=2'
-
-            return new_resource
-
         # TODO: StackOverflow doesn't care of the order of the kwargs in url
-        #       Need to take that into account somehow
-        url, start = url.split('&')
-        arg, current = start.split('=')
-        new_url = url + '&' + arg + '=' + str(int(current) + 1)
+        #       Do I need to take that into account somehow?
+        resource = resource.split('=')
+        resource[-1] = str(int(resource[-1]) + 1)
+        new_resource = '='.join(resource)
 
-        return new_url
+        return new_resource
 
 
-    def _previous_page(self, url):
-        """Changes the current page to previous page
+    def _previous_page(self, resource):
+        """Changes the current page to next page
         
+        Args:
+            resource: Location/filename of the current endpoint
         
         Returns:
-            Current url as a string
+            Current location/filename as a string
         """
 
-        if url.endswith('0'):
-            return url
+        if resource.endswith('1'):
+            return resource
 
         # TODO: StackOverflow doesn't care of the order of the kwargs in url
-        #       Need to take that into account somehow
-        url, start = url.split('&')
-        arg, current = start.split('=')
-        
-        new_url = url + '&' + arg + '=' + str(int(current) - 1)
+        #       Do I need to take that into account somehow?
+        resource = resource.split('=')
+        resource[-1] = str(int(resource[-1]) - 1)
+        new_resource = '='.join(resource)
 
-        return new_url
+        return new_resource

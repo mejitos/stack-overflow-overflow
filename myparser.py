@@ -17,7 +17,6 @@ class Parser:
             List of clean urls as strings
         """
 
-
         soup = BeautifulSoup(resource, Config.PARSER)
 
         parsed_urls = []
@@ -40,7 +39,6 @@ class Parser:
         Returns
             List of Result objects
         """
-
 
         output = []
         soup = BeautifulSoup(resource, Config.PARSER)

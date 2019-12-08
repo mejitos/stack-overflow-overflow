@@ -69,7 +69,7 @@ class SearchPage(Page):
         super().__init__()
         self._pagination = Pagination()
 
-        self._resource, response = self._query.query(q=query, tab='relevance')
+        self._resource, response = self._query.query(q=query, tab='relevance', page=1)
         self._urls = self._parser.parse_urls(response)
 
 
@@ -79,25 +79,25 @@ class SearchPage(Page):
         return self._urls
 
 
-    def _set_urls(self):
+    def _add_urls(self):
         """Sets the urls according to the current page
         
         Is used when initializing page and/or when changing page to next
         or previous.
         """
 
-        self._urls = self._parser.parse_urls(self._query.get(self._resource))
+        self._urls = self._urls + self._parser.parse_urls(self._query.get(self._resource))
 
 
     def next_page(self):
         """Sets the current page to the next page in queried results"""
 
         self._resource = self._pagination._next_page(self._resource)
-        self._set_urls()
+        self._add_urls()
 
 
     def previous_page(self):
         """Sets the current page to the previous page in queried results"""
 
         self._resource = self._pagination._previous_page(self._resource)
-        self._set_urls()
+        self._add_urls()
